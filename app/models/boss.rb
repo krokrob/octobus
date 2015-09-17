@@ -1,4 +1,6 @@
 class Boss < ActiveRecord::Base
+  has_one :center
+
   def self.from_omniauth(auth_hash)
       boss = find_or_create_by(uid: auth_hash['uid'], provider: auth_hash['provider'])
       boss.name = auth_hash['info']['nickname']
